@@ -31,7 +31,7 @@ class QuizBrain {
   ];
 
   void nextQuestion() {
-    if (_questionNumber < _questionCollection.length) {
+    if (_questionNumber < _questionCollection.length - 1) {
       _questionNumber++;
     }
   }
@@ -42,5 +42,19 @@ class QuizBrain {
 
   bool getAnswer() {
     return _questionCollection[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    if (_questionNumber >= _questionCollection.length - 1) {
+      print('You have reached the end of the line');
+      return true;
+    } else {
+      print(_questionNumber);
+      return false;
+    }
+  }
+
+  int reset() {
+    _questionNumber = 0;
   }
 }
