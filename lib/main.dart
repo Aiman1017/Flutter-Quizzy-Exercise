@@ -5,6 +5,7 @@ import 'quiz_brain.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
+int correct = 0;
 
 void main() => runApp(Quizzler());
 
@@ -40,7 +41,7 @@ class _QuizPageState extends State<QuizPage> {
         Alert(
           context: context,
           title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz.',
+          desc: 'You\'ve reached the end of the quiz. Your score is $correct',
           buttons: [
             DialogButton(
               child: Text(
@@ -54,19 +55,23 @@ class _QuizPageState extends State<QuizPage> {
         ).show();
         quizBrain.reset();
         scoreKeeper = [];
+        correct = 0;
       } else {
         if (userAnswer == correctAnswer) {
           scoreKeeper.add(
             Icon(
               Icons.check,
               color: Colors.green,
+              size: 30.0,
             ),
           );
+          correct++;
         } else {
           scoreKeeper.add(
             Icon(
               Icons.cancel,
               color: Colors.red,
+              size: 30.0,
             ),
           );
         }
@@ -83,14 +88,15 @@ class _QuizPageState extends State<QuizPage> {
       children: <Widget>[
         Expanded(
           flex: 5,
-          child: Padding(
+          child: Container(
+            margin: EdgeInsets.only(top: 20.0),
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
                 quizBrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 30.0,
                   color: Colors.white,
                 ),
               ),

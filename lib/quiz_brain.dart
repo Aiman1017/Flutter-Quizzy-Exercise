@@ -55,6 +55,6 @@ class QuizBrain {
   }
 
   int reset() {
-    _questionNumber = 0;
+    _questionNumber = -1;
   }
 }
