@@ -40,8 +40,8 @@ class _QuizPageState extends State<QuizPage> {
       if (quizBrain.isFinished() == true) {
         Alert(
           context: context,
-          title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz. Your score is $correct',
+          title: 'Finished! Your score is $correct',
+          desc: 'You\'ve reached the end of the quiz.',
           buttons: [
             DialogButton(
               child: Text(
